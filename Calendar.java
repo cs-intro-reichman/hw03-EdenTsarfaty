@@ -18,16 +18,16 @@ public class Calendar1 {
 	    // Prints each date dd/mm/yyyy in a separate line. If the day is a Sunday, prints "Sunday".
 	    // The following variable, used for debugging purposes, counts how many days were advanced so far.
 	    int debugDaysCounter = 0;
-		int numberOfSundays = 0;
+		int targetYear = Integer.parseInt(args[0]);
 	    //// Write the necessary initialization code, and replace the condition
 	    //// of the while loop with the necessary condition
-	 	while (year < 2000) {
+		while (year < targetYear) {
+			advance();
+		}
+	 	while (year == targetYear) {
 	 		System.out.print(dayOfMonth + "/" + month + "/" + year);
 			 if (dayOfWeek == 1) {
 				 System.out.print(" Sunday");
-				 if (dayOfMonth == 1) {
-					 numberOfSundays++;
-				 }
 			 }
 			 System.out.println();
 	 		advance();
@@ -38,8 +38,6 @@ public class Calendar1 {
 	 			break;
 	 		}
         }
-		 System.out.print("During the 20th century, " + numberOfSundays + "" +
-				 " Sundays fell on the first day of the month");
 	}
 	
 	 // Advances the date (day, month, year) and the day-of-the-week.
@@ -69,8 +67,12 @@ public class Calendar1 {
 		 
     // Returns true if the given year is a leap year, false otherwise.
 	private static boolean isLeapYear(int year) {
-		if (year % 4 == 0 && year % 100 != 0)
+		if (year % 4 == 0 && year % 100 != 0) {
 			return true;
+		}
+		if (year % 400 == 0){
+			return true;
+		}
 		return false;
 	}
 	 
